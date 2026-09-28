@@ -1,0 +1,35 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Environment files
+.env
+!.env.example
+
+# Vector databases & storage
+data/chroma_db/
+data/uploads/
+data/documents.json
+data/evaluations.json
+chroma_db/
+qdrant_storage/
+uploads/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
