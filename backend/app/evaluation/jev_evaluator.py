@@ -28,15 +28,17 @@ class JevAdapter:
         api_key: Optional[str] = None,
         base_url: Optional[str] = None,
     ):
-        self.api_key = api_key or settings.JEV_API_KEY or os.environ.get("TYPESAFE_API_KEY", "")
-        self.base_url = base_url or settings.JEV_BASE_URL or os.environ.get("TYPESAFE_BASE_URL", None)
+        self.api_key = (api_key or settings.JEV_API_KEY or os.environ.get("TYPESAFE_API_KEY", "")).strip()
+        raw_base = base_url or settings.JEV_BASE_URL or os.environ.get("TYPESAFE_BASE_URL", None)
+        self.base_url = raw_base.strip() if (raw_base and str(raw_base).strip()) else None
         self.is_live = bool(self.api_key)
 
         if self.is_live:
-            self.client = AsyncTypeSafeClient(
-                api_key=self.api_key,
-                base_url=self.base_url,
-            )
+            kwargs = {"api_key": self.api_key}
+            if self.base_url:
+                kwargs["base_url"] = self.base_url
+            self.client = AsyncTypeSafeClient(**kwargs)
+            logger.info("JevAdapter initialized in live mode with TypeSafe SDK")
         else:
             self.client = None
             logger.info("JevAdapter operating in local heuristic/mock mode (no JEV_API_KEY set)")
