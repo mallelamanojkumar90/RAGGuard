@@ -145,7 +145,7 @@ Run the full stack (FastAPI backend + Nginx React frontend + ChromaDB persistenc
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/your-org/RAGGuard.git
+git clone https://github.com/mallelamanojkumar90/RAGGuard.git
 cd RAGGuard
 
 # 2. Configure environment
@@ -178,7 +178,7 @@ docker compose down
 #### Step 1: Environment & Backend Setup
 ```bash
 # Clone repository
-git clone https://github.com/your-org/RAGGuard.git
+git clone https://github.com/mallelamanojkumar90/RAGGuard.git
 cd RAGGuard
 
 # Copy environment file
